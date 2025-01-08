@@ -45,7 +45,14 @@ extension GOWebview {
         func setupExcuter (_ completion:@escaping (Request) -> Void) {
             self.requestHandler = completion
         }
+        
         private var requestHandler:((Request) -> Void)? = nil
+        @discardableResult
+        public func excute(_ request:Request)->ViewModel {
+            self.request = request
+            self.requestHandler?(request)
+            return self
+        }
         
         public func makeCookies(headers: [String: String], path: String? = nil) -> [HTTPCookie]? {
             let path = path ?? self.path
