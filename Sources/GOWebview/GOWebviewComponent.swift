@@ -11,13 +11,14 @@ import Combine
 import GOLibrary
 
 extension GOWebview {
-    struct GOWebviewComponent: View {
+    public struct GOWebviewComponent: View {
         @EnvironmentObject var viewModel:ViewModel
         var config: WKWebViewConfiguration? = nil
         var scriptMessageHandler :WKScriptMessageHandler? = nil
         var scriptMessageHandlerName : String = ""
         var uiDelegate:WKUIDelegate? = nil
-        var body: some View {
+        public init() {}
+        public var body: some View {
             ZStack{
                 GOWebviewRepresentable(
                     config: self.config ,
